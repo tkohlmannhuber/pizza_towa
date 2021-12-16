@@ -25,4 +25,3 @@ Import SQL file.
 ## Overview
 
 - Current Wordpress Version 5.8.2
--
