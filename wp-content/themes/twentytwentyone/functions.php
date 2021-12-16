@@ -682,6 +682,7 @@ function custom_post_type() {
 	}
 	add_action( 'init', 'custom_post_type', 0 );
 
+
 // QUERY THE CUSTOM POST TYPE 
 function pizza_endpoint( $request_data) {
 	$args = array(
@@ -696,3 +697,12 @@ function pizza_endpoint( $request_data) {
 
 	return $posts;
 }
+
+// PREPARE API ENDPOINT
+
+add_action('rest_api_init', function() {
+	register_rest_route('pizza/v1', '/pizzas/', array(
+		'methods' => 'GET',
+		'callback' => 'pizza_endpoint',
+	));
+});
