@@ -5,6 +5,7 @@
 # "mu-plugins", "plugins", "themes" directory
 wp-content/mu-plugins/
 wp-content/plugins/
+wp-content/uploads/
 !wp-content/themes/
 
 # ignore these plugins
