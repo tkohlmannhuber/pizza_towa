@@ -684,7 +684,7 @@ function custom_post_type() {
 
 
 // QUERY THE CUSTOM POST TYPE 
-function pizza_endpoint( $request_data) {
+function all_pizzas_endpoint( $request_data) {
 	$args = array(
 		'post_type' => 'pizza',
 		'posts_per_page' => -1,
@@ -703,6 +703,6 @@ function pizza_endpoint( $request_data) {
 add_action('rest_api_init', function() {
 	register_rest_route('pizza/v1', '/pizzas/', array(
 		'methods' => 'GET',
-		'callback' => 'pizza_endpoint',
+		'callback' => 'all_pizzas_endpoint',
 	));
 });
