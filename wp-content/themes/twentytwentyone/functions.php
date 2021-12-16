@@ -681,3 +681,18 @@ function custom_post_type() {
 		register_post_type( 'pizza', $args );
 	}
 	add_action( 'init', 'custom_post_type', 0 );
+
+// QUERY THE CUSTOM POST TYPE 
+function pizza_endpoint( $request_data) {
+	$args = array(
+		'post_type' => 'pizza',
+		'posts_per_page' => -1,
+	);
+
+	$posts = get_posts( $args );
+	foreach( $posts as $key => $post ){
+		$posts[$key]->acf = get_fields($post->ID);
+	}
+
+	return $posts;
+}
