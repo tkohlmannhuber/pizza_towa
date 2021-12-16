@@ -637,3 +637,47 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+
+function custom_post_type() {
+	// UI LABLES FOR CPT
+		$labels = array(
+			'name'                => _x( 'Pizza', 'Post Type General Name', 'storefront' ),
+			'singular_name'       => _x( 'Pizza', 'Post Type Singular Name', 'storefront' ),
+			'menu_name'           => __( 'Pizza', 'storefront' ),
+			'parent_item_colon'   => __( 'Parent Pizza', 'storefront' ),
+			'all_items'           => __( 'All Pizza', 'storefront' ),
+			'view_item'           => __( 'View Pizza', 'storefront' ),
+			'add_new_item'        => __( 'Add New Pizza', 'storefront' ),
+			'add_new'             => __( 'Add New', 'storefront' ),
+			'edit_item'           => __( 'Edit Pizza', 'storefront' ),
+			'update_item'         => __( 'Update Pizza', 'storefront' ),
+			'search_items'        => __( 'Search Pizza', 'storefront' ),
+			'not_found'           => __( 'Not Found', 'storefront' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'storefront' ),
+		);
+	// OPTIONS FOR CPT
+		$args = array(
+			'label'               => __( 'Pizza', 'storefront' ),
+			'description'         => __( 'Pizza List', 'storefront' ),
+			'labels'              => $labels,  
+			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),     
+			'taxonomies'          => array( 'genres' ),     
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 5,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'post',
+			'show_in_rest' => true, 
+		);
+		// REGISTER CPT
+		register_post_type( 'pizza', $args );
+	}
+	add_action( 'init', 'custom_post_type', 0 );
